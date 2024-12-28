@@ -20,7 +20,7 @@ async def create_player(player: PlayerModel):
     db.insert_one(dict(player))
     return playerListEntity(db.find())
 
-@router.put("/players")
+@router.put("/players/{player_id}")
 async def update_player(player_id: str, player: PlayerModel):
     db.find_one_and_update({'_id': ObjectId(player_id)}, {'$set': dict(player)})
 
